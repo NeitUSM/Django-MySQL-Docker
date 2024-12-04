@@ -1,0 +1,44 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+footer{
+    height: 150px;
+    margin-top: 30px;
+    background-color: #F7AE00;
+    text-align: center;
+    color: black;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+#separar{
+    height: 40px;
+    background-color: #004b85;
+    margin-bottom: 35px;
+}
+
+nav{
+    padding: 0px;
+    height: 100px;
+}
+
+#foot {
+    padding-top: 40px
+}
+#actividad{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#botonSeparar{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#Segmentos{
+    margin-top: 30px;
+}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+    <title>Agenda USM Prueba Docker</title>
+</head>
+<body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="{% static 'core/img/logo.png' %}" class="header-logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ms-auto"> <!-- Utilizamos "ms-auto" para mover los elementos a la derecha -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Iniciar sesión</a>
+                    </li>
+                    {% endif %}
+                  </ul>
+              </div>
+          </div>
+      </nav>
+    </header>
+    <div id="separar"></div>
+    {%block content%}
+    
+    {% endblock %}
+    <footer>
+        <div id="foot">
+          <h5>Link a <a href="https://github.com/MattKRZ/CER3-Agenda-USM" target="_blank">Repositorio
+          </a></h5>
+          <h5>Página web diseñada por: <a href="https://github.com/MattKRZ" target="_blank">Matia Zambelli</a> y <a href="https://github.com/NeitUSM" target="_blank"> Natán Apablaza</a></h5>
+        </div>
+      </footer>
+    <script src="{% static 'core/js/bootstrap.js' %}"></script>
+</body>
+</html>
