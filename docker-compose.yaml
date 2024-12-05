@@ -3,33 +3,38 @@ version: '3.9'
 services:
   mysql:
     image: mysql:8.0
+    networks:
+      - backend
     container_name: mysql
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:${MYSQL_PORT}"
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: agendausm
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+
   django:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - backend
     container_name: django_app
     ports:
-      - "8000:8000"
+      - "${DJANGO_PORT}:${DJANGO_PORT}"
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: agendausm
-      MYSQL_USER: django_user
-      MYSQL_PASSWORD: password
-
+      DJANGO_PORT: ${DJANGO_PORT}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
 networks:
   backend:
     driver: bridge
+    name: network_proyecto_backend
 
 volumes:
   mysql_data:
+    

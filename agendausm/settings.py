@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'agendausm',
-        'USER': 'django_user',  # Nuevo usuario
-        'PASSWORD': 'password',  # Contraseña para el nuevo usuario
+        'USER': 'root', 
+        'PASSWORD': 'password', 
         'HOST': 'mysql',
         'PORT': '3306',
     }
